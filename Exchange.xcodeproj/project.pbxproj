@@ -9,19 +9,21 @@
 /* Begin PBXBuildFile section */
 		F7FEBA3B2D23294F00E35E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEBA3A2D23294F00E35E17 /* AppDelegate.swift */; };
 		F7FEBA3D2D23294F00E35E17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEBA3C2D23294F00E35E17 /* SceneDelegate.swift */; };
-		F7FEBA3F2D23294F00E35E17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEBA3E2D23294F00E35E17 /* ViewController.swift */; };
 		F7FEBA442D23295100E35E17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7FEBA432D23295100E35E17 /* Assets.xcassets */; };
 		F7FEBA4F2D232ADF00E35E17 /* EXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEBA4E2D232ADF00E35E17 /* EXViewController.swift */; };
+		F7FEBA522D232F7A00E35E17 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEBA512D232F7A00E35E17 /* Typography.swift */; };
+		F7FEBA542D23302D00E35E17 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEBA532D23302D00E35E17 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F7FEBA372D23294F00E35E17 /* Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7FEBA3A2D23294F00E35E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7FEBA3C2D23294F00E35E17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F7FEBA3E2D23294F00E35E17 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F7FEBA432D23295100E35E17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7FEBA482D23295100E35E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7FEBA4E2D232ADF00E35E17 /* EXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXViewController.swift; sourceTree = "<group>"; };
+		F7FEBA512D232F7A00E35E17 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		F7FEBA532D23302D00E35E17 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,23 @@
 		F7FEBA392D23294F00E35E17 /* Exchange */ = {
 			isa = PBXGroup;
 			children = (
+				F7FEBA432D23295100E35E17 /* Assets.xcassets */,
 				F7FEBA3A2D23294F00E35E17 /* AppDelegate.swift */,
 				F7FEBA3C2D23294F00E35E17 /* SceneDelegate.swift */,
-				F7FEBA3E2D23294F00E35E17 /* ViewController.swift */,
-				F7FEBA432D23295100E35E17 /* Assets.xcassets */,
-				F7FEBA482D23295100E35E17 /* Info.plist */,
+				F7FEBA502D232F5700E35E17 /* Support */,
 				F7FEBA4E2D232ADF00E35E17 /* EXViewController.swift */,
+				F7FEBA482D23295100E35E17 /* Info.plist */,
 			);
 			path = Exchange;
+			sourceTree = "<group>";
+		};
+		F7FEBA502D232F5700E35E17 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				F7FEBA512D232F7A00E35E17 /* Typography.swift */,
+				F7FEBA532D23302D00E35E17 /* Colors.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,7 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7FEBA3F2D23294F00E35E17 /* ViewController.swift in Sources */,
+				F7FEBA522D232F7A00E35E17 /* Typography.swift in Sources */,
+				F7FEBA542D23302D00E35E17 /* Colors.swift in Sources */,
 				F7FEBA4F2D232ADF00E35E17 /* EXViewController.swift in Sources */,
 				F7FEBA3B2D23294F00E35E17 /* AppDelegate.swift in Sources */,
 				F7FEBA3D2D23294F00E35E17 /* SceneDelegate.swift in Sources */,
