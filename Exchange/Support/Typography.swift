@@ -10,7 +10,7 @@ import UIKit
 public struct Typography {
     
     // Title Fonts
-    static let titleXL = UIFont(name: "Inter-SemiBold", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .semibold)
+    static let title = UIFont(name: "Inter-SemiBold", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .semibold)
     
     // Text Fonts
     static let textMD = UIFont(name: "Inter-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .regular)

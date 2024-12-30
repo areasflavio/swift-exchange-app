@@ -56,10 +56,10 @@
 		F7FEBA392D23294F00E35E17 /* Exchange */ = {
 			isa = PBXGroup;
 			children = (
+				F7FEBA502D232F5700E35E17 /* Support */,
 				F7FEBA432D23295100E35E17 /* Assets.xcassets */,
 				F7FEBA3A2D23294F00E35E17 /* AppDelegate.swift */,
 				F7FEBA3C2D23294F00E35E17 /* SceneDelegate.swift */,
-				F7FEBA502D232F5700E35E17 /* Support */,
 				F7FEBA4E2D232ADF00E35E17 /* EXViewController.swift */,
 				F7FEBA482D23295100E35E17 /* Info.plist */,
 			);
