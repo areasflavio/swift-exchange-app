@@ -13,6 +13,7 @@
 		F7FEBA4F2D232ADF00E35E17 /* EXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEBA4E2D232ADF00E35E17 /* EXViewController.swift */; };
 		F7FEBA522D232F7A00E35E17 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEBA512D232F7A00E35E17 /* Typography.swift */; };
 		F7FEBA542D23302D00E35E17 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEBA532D23302D00E35E17 /* Colors.swift */; };
+		F7FEBA5A2D233D3300E35E17 /* EXCurrencyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEBA592D233D3300E35E17 /* EXCurrencyInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		F7FEBA4E2D232ADF00E35E17 /* EXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXViewController.swift; sourceTree = "<group>"; };
 		F7FEBA512D232F7A00E35E17 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		F7FEBA532D23302D00E35E17 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		F7FEBA592D233D3300E35E17 /* EXCurrencyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXCurrencyInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		F7FEBA392D23294F00E35E17 /* Exchange */ = {
 			isa = PBXGroup;
 			children = (
+				F7FEBA582D233D1100E35E17 /* Components */,
 				F7FEBA502D232F5700E35E17 /* Support */,
 				F7FEBA432D23295100E35E17 /* Assets.xcassets */,
 				F7FEBA3A2D23294F00E35E17 /* AppDelegate.swift */,
@@ -73,6 +76,14 @@
 				F7FEBA532D23302D00E35E17 /* Colors.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		F7FEBA582D233D1100E35E17 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F7FEBA592D233D3300E35E17 /* EXCurrencyInput.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +157,7 @@
 			files = (
 				F7FEBA522D232F7A00E35E17 /* Typography.swift in Sources */,
 				F7FEBA542D23302D00E35E17 /* Colors.swift in Sources */,
+				F7FEBA5A2D233D3300E35E17 /* EXCurrencyInput.swift in Sources */,
 				F7FEBA4F2D232ADF00E35E17 /* EXViewController.swift in Sources */,
 				F7FEBA3B2D23294F00E35E17 /* AppDelegate.swift in Sources */,
 				F7FEBA3D2D23294F00E35E17 /* SceneDelegate.swift in Sources */,
