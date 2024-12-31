@@ -41,7 +41,7 @@ class EXViewController: UIViewController {
         }
     }
     
-    private func exchangeCurrency(currency: String) async {
+    private func exchangeCurrency(currency: String) {
         
         Task {
             do {
@@ -61,6 +61,9 @@ class EXViewController: UIViewController {
         view.backgroundColor = Colors.gray400
         view.addSubview(logoImageView)
         view.addSubview(contentStackView)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
         
         configureLogo()
         configureContentView()
@@ -191,28 +194,33 @@ class EXViewController: UIViewController {
         ])
     }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     @objc private func didTapButton() {
         
-        Task {
-            if exchanges == nil, let currency = currencyInput.currency {
-                await exchangeCurrency(currency: currency)
-            } else {
-                DispatchQueue.main.async {
-                    self.updateUIWithExchanges()
-                }
+        if exchanges == nil {
+            if let currency = currencyInput.currency {
+                exchangeCurrency(currency: currency)
             }
+        } else {
+            updateUIWithExchanges()
         }
+        
+        dismissKeyboard()
     }
     
     private func updateUIWithExchanges() {
-        
+                        
         if let valueFrom = currencyInput.value,
            let valueFromNumber = Double(valueFrom),
            let currencyTo = currencyOutput.currency,
            let exchanges = self.exchanges,
            let exchange = exchanges.data[currencyTo] {
-            
-            currencyOutput.set(value: String(format: "%.2f", valueFromNumber / exchange))
+                        
+            currencyInput.set(value: valueFromNumber)
+            currencyOutput.set(value: valueFromNumber / exchange)
         }
     }
 }

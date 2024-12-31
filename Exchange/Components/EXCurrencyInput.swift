@@ -15,7 +15,7 @@ class EXCurrencyInput: UIView {
     let currencyPickerView = UIPickerView()
     let currencyInputField = UITextField()
     
-    var value: String? { valueInputText.text }
+    var value: String? { valueInputText.text?.replacingOccurrences(of: ",", with: ".") }
     var currency: String? { currencyInputField.text }
     
     let padding: CGFloat = 16
@@ -39,13 +39,16 @@ class EXCurrencyInput: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func set(value: String) {
-        valueInputText.text = value
+    public func set(value: Double) {
+        valueInputText.text = String(format: "%.2f", value).replacingOccurrences(of: ".", with: ",")
     }
     
     public func set(options: [String]) {
         self.options = options
-        currencyInputField.text = options[0]
+        
+        if let firstOption = options.first {
+            currencyInputField.text = firstOption
+        }
     }
     
     private func configure() {
