@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F70105402D24535100FBD2F0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F701053F2D24535100FBD2F0 /* NetworkManager.swift */; };
+		F70105432D2455FC00FBD2F0 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70105422D2455FC00FBD2F0 /* Currency.swift */; };
+		F70105462D2456A500FBD2F0 /* EXErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70105452D2456A500FBD2F0 /* EXErrors.swift */; };
+		F70105482D2458DD00FBD2F0 /* EXConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70105472D2458DD00FBD2F0 /* EXConversions.swift */; };
 		F7FEBA3B2D23294F00E35E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEBA3A2D23294F00E35E17 /* AppDelegate.swift */; };
 		F7FEBA3D2D23294F00E35E17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEBA3C2D23294F00E35E17 /* SceneDelegate.swift */; };
 		F7FEBA442D23295100E35E17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7FEBA432D23295100E35E17 /* Assets.xcassets */; };
@@ -17,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F701053F2D24535100FBD2F0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F70105422D2455FC00FBD2F0 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		F70105452D2456A500FBD2F0 /* EXErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXErrors.swift; sourceTree = "<group>"; };
+		F70105472D2458DD00FBD2F0 /* EXConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXConversions.swift; sourceTree = "<group>"; };
 		F7FEBA372D23294F00E35E17 /* Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7FEBA3A2D23294F00E35E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7FEBA3C2D23294F00E35E17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +47,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F70105412D2455EF00FBD2F0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F70105422D2455FC00FBD2F0 /* Currency.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F70105442D24569600FBD2F0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F70105452D2456A500FBD2F0 /* EXErrors.swift */,
+				F70105472D2458DD00FBD2F0 /* EXConversions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		F7FEBA2E2D23294E00E35E17 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +83,8 @@
 		F7FEBA392D23294F00E35E17 /* Exchange */ = {
 			isa = PBXGroup;
 			children = (
+				F70105442D24569600FBD2F0 /* Utils */,
+				F70105412D2455EF00FBD2F0 /* Models */,
 				F7FEBA582D233D1100E35E17 /* Components */,
 				F7FEBA502D232F5700E35E17 /* Support */,
 				F7FEBA432D23295100E35E17 /* Assets.xcassets */,
@@ -65,6 +92,7 @@
 				F7FEBA3C2D23294F00E35E17 /* SceneDelegate.swift */,
 				F7FEBA4E2D232ADF00E35E17 /* EXViewController.swift */,
 				F7FEBA482D23295100E35E17 /* Info.plist */,
+				F701053F2D24535100FBD2F0 /* NetworkManager.swift */,
 			);
 			path = Exchange;
 			sourceTree = "<group>";
@@ -157,7 +185,11 @@
 			files = (
 				F7FEBA522D232F7A00E35E17 /* Typography.swift in Sources */,
 				F7FEBA542D23302D00E35E17 /* Colors.swift in Sources */,
+				F70105482D2458DD00FBD2F0 /* EXConversions.swift in Sources */,
 				F7FEBA5A2D233D3300E35E17 /* EXCurrencyInput.swift in Sources */,
+				F70105402D24535100FBD2F0 /* NetworkManager.swift in Sources */,
+				F70105462D2456A500FBD2F0 /* EXErrors.swift in Sources */,
+				F70105432D2455FC00FBD2F0 /* Currency.swift in Sources */,
 				F7FEBA4F2D232ADF00E35E17 /* EXViewController.swift in Sources */,
 				F7FEBA3B2D23294F00E35E17 /* AppDelegate.swift in Sources */,
 				F7FEBA3D2D23294F00E35E17 /* SceneDelegate.swift in Sources */,

@@ -15,13 +15,26 @@ class EXViewController: UIViewController {
     let contentTitle = UILabel()
     let contentText = UILabel()
     let currencyInput = EXCurrencyInput()
-    let currencyOutput = EXCurrencyInput()
+    let currencyOutput = EXCurrencyInput(readonly: true)
     let convertButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getCurrencies()
         configure()
+    }
+    
+    private func getCurrencies() {
+        
+        Task {
+            do {
+                let currencies = try await NetworkManager.shared.getCurrencies()
+                print(currencies)
+            } catch {
+                print(error)
+            }
+        }
     }
     
     private func configure() {
