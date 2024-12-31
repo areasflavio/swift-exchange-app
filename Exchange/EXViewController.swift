@@ -30,7 +30,9 @@ class EXViewController: UIViewController {
         Task {
             do {
                 let currencies = try await NetworkManager.shared.getCurrencies()
-                print(currencies)
+                let options = mapCurrenciesToPicker(currencies)
+                currencyInput.set(options: options)
+                currencyOutput.set(options: options)
             } catch {
                 print(error)
             }

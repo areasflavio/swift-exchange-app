@@ -13,13 +13,13 @@ class EXCurrencyInput: UIView {
     let inputDivider = UIView()
     
     let currencyPickerView = UIPickerView()
-    let options = ["🇧🇷 BRL", "🇺🇸 USD", "🇪🇺 EUR"]
     let currencyInputField = UITextField()
     
     var value: String? { valueInputText.text }
     var currency: String? { currencyInputField.text }
     
     let padding: CGFloat = 16
+    var options: [String] = []
     var readonly: Bool = false
     
     override init(frame: CGRect) {
@@ -43,6 +43,11 @@ class EXCurrencyInput: UIView {
         valueInputText.text = value
     }
     
+    public func set(options: [String]) {
+        self.options = options
+        currencyInputField.text = options[0]
+    }
+    
     private func configure() {
         
         self.layer.cornerRadius = 8
@@ -64,7 +69,6 @@ class EXCurrencyInput: UIView {
         chevron.contentMode = .scaleAspectFit
         chevron.tintColor = Colors.gray100
         
-        currencyInputField.text = options[0]
         currencyInputField.font = Typography.textMD
         currencyInputField.textColor = Colors.gray100
         currencyInputField.borderStyle = .none

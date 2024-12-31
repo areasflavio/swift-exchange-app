@@ -11,5 +11,10 @@ func convertCurrencyResponseToCurrencyArray(_ response: CurrencyResponse) -> [Cu
     
     return response.data.map { (key, value) -> Currency in
         return value
-    }
+    }.sorted { $0.code < $1.code }
+}
+
+func mapCurrenciesToPicker(_ currencies: [Currency]) -> [String] {
+    
+    return currencies.map { $0.code }
 }
