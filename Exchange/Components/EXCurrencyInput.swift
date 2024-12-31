@@ -11,9 +11,16 @@ class EXCurrencyInput: UIView {
     
     let valueInputText = UITextField()
     let inputDivider = UIView()
-    let currencyInput = UIView()
+    
+    let currencyPickerView = UIPickerView()
+    let options = ["🇧🇷 BRL", "🇺🇸 USD", "🇪🇺 EUR"]
+    let currencyInputField = UITextField()
+    
+    var value: String? { valueInputText.text }
+    var currency: String? { currencyInputField.text }
     
     let padding: CGFloat = 16
+    var readonly: Bool = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,8 +28,19 @@ class EXCurrencyInput: UIView {
         configure()
     }
     
+    public init(readonly: Bool) {
+        super.init(frame: .zero)
+        
+        self.readonly = readonly
+        configure()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func set(value: String) {
+        valueInputText.text = value
     }
     
     private func configure() {
@@ -33,7 +51,7 @@ class EXCurrencyInput: UIView {
         
         self.addSubview(valueInputText)
         self.addSubview(inputDivider)
-        self.addSubview(currencyInput)
+        self.addSubview(currencyInputField)
         
         configureCurrencyInput()
         configureInputDivider()
@@ -42,14 +60,27 @@ class EXCurrencyInput: UIView {
     
     private func configureCurrencyInput() {
         
-        currencyInput.backgroundColor = .systemPink
-        currencyInput.translatesAutoresizingMaskIntoConstraints = false
+        let chevron = UIImageView(image: UIImage(systemName: "chevron.down"))
+        chevron.contentMode = .scaleAspectFit
+        chevron.tintColor = Colors.gray100
         
+        currencyInputField.text = options[0]
+        currencyInputField.font = Typography.textMD
+        currencyInputField.textColor = Colors.gray100
+        currencyInputField.borderStyle = .none
+        currencyInputField.rightView = chevron
+        currencyInputField.rightViewMode = .always
+        currencyInputField.translatesAutoresizingMaskIntoConstraints = false
+        
+        currencyPickerView.delegate = self
+        currencyPickerView.dataSource = self
+        currencyInputField.inputView = currencyPickerView
+                
         NSLayoutConstraint.activate([
-            currencyInput.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
-            currencyInput.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            currencyInput.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding),
-            currencyInput.widthAnchor.constraint(equalToConstant: 100)
+            currencyInputField.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
+            currencyInputField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            currencyInputField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding),
+            currencyInputField.widthAnchor.constraint(equalToConstant: 100)
         ])
     }
     
@@ -60,7 +91,7 @@ class EXCurrencyInput: UIView {
         
         NSLayoutConstraint.activate([
             inputDivider.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
-            inputDivider.trailingAnchor.constraint(equalTo: currencyInput.leadingAnchor, constant: -padding),
+            inputDivider.trailingAnchor.constraint(equalTo: currencyInputField.leadingAnchor, constant: -padding),
             inputDivider.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding),
             inputDivider.widthAnchor.constraint(equalToConstant: 1)
         ])
@@ -75,14 +106,35 @@ class EXCurrencyInput: UIView {
         valueInputText.adjustsFontSizeToFitWidth = true
         valueInputText.placeholder = "1000,00"
         valueInputText.keyboardType = .decimalPad
+        valueInputText.isUserInteractionEnabled = !readonly
         
         valueInputText.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             valueInputText.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
             valueInputText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-            valueInputText.trailingAnchor.constraint(equalTo: currencyInput.leadingAnchor, constant: -padding),
+            valueInputText.trailingAnchor.constraint(equalTo: currencyInputField.leadingAnchor, constant: -padding),
             valueInputText.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding),
         ])
+    }
+}
+
+extension EXCurrencyInput: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return options.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return options[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        currencyInputField.text = options[row]
+        currencyInputField.resignFirstResponder()
     }
 }
