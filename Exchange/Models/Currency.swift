@@ -21,3 +21,7 @@ struct Currency: Codable {
 struct CurrencyResponse: Codable {
     let data: [String: Currency]
 }
+
+struct CurrencyExchange: Codable {
+    let data: [String: Double]
+}

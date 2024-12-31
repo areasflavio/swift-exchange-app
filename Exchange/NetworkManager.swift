@@ -43,4 +43,22 @@ class NetworkManager {
         }
     }
     
+    public func exchangeCurrency(_ currency: String) async throws -> CurrencyExchange {
+        
+        guard let endpoint = endpoint(with: "latest"), let url = URL(string: endpoint + "&base_currency=\(currency)") else {
+            throw EXErrors.cantExchangeCurrencies
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw EXErrors.invalidResponse
+        }
+        
+        do {
+            return try decoder.decode(CurrencyExchange.self, from: data)
+        } catch {
+            throw EXErrors.invalidData
+        }
+    }
 }

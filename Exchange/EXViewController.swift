@@ -17,6 +17,8 @@ class EXViewController: UIViewController {
     let currencyInput = EXCurrencyInput()
     let currencyOutput = EXCurrencyInput(readonly: true)
     let convertButton = UIButton()
+    
+    var exchanges: CurrencyExchange?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,22 @@ class EXViewController: UIViewController {
                 let options = mapCurrenciesToPicker(currencies)
                 currencyInput.set(options: options)
                 currencyOutput.set(options: options)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    private func exchangeCurrency(currency: String) async {
+        
+        Task {
+            do {
+                let exchanges = try await NetworkManager.shared.exchangeCurrency(currency)
+                self.exchanges = exchanges
+                
+                DispatchQueue.main.async {
+                    self.updateUIWithExchanges()
+                }
             } catch {
                 print(error)
             }
@@ -155,7 +173,11 @@ class EXViewController: UIViewController {
         convertButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         
         convertButton.setImage(UIImage(systemName: "arrow.left.arrow.right"), for: .normal)
-        convertButton.tintColor = Colors.gray100
+        convertButton.tintColor = Colors.purpleBase
+        convertButton.layer.borderWidth = 1
+        convertButton.layer.borderColor = Colors.purpleBase.cgColor
+        convertButton.layer.cornerRadius = 8
+        convertButton.backgroundColor = Colors.purpleLight
         convertButton.contentHorizontalAlignment = .center
         convertButton.contentVerticalAlignment = .center
         
@@ -170,6 +192,27 @@ class EXViewController: UIViewController {
     }
     
     @objc private func didTapButton() {
-        print("Button tapped!")
+        
+        Task {
+            if exchanges == nil, let currency = currencyInput.currency {
+                await exchangeCurrency(currency: currency)
+            } else {
+                DispatchQueue.main.async {
+                    self.updateUIWithExchanges()
+                }
+            }
+        }
+    }
+    
+    private func updateUIWithExchanges() {
+        
+        if let valueFrom = currencyInput.value,
+           let valueFromNumber = Double(valueFrom),
+           let currencyTo = currencyOutput.currency,
+           let exchanges = self.exchanges,
+           let exchange = exchanges.data[currencyTo] {
+            
+            currencyOutput.set(value: String(format: "%.2f", valueFromNumber / exchange))
+        }
     }
 }
