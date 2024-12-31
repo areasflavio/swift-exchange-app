@@ -87,7 +87,7 @@ class EXCurrencyInput: UIView {
             currencyInputField.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
             currencyInputField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             currencyInputField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding),
-            currencyInputField.widthAnchor.constraint(equalToConstant: 100)
+            currencyInputField.widthAnchor.constraint(equalToConstant: 60)
         ])
     }
     

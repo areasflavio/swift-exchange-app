@@ -50,13 +50,6 @@
             ReferencedContainer = "container:Exchange.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "KEY"
-            value = "fca_live_s0lgoxg2f0yarQSQzRZpmmSIbKc6m5dV5yTzLv71"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

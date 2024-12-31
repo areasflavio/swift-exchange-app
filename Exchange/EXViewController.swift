@@ -10,6 +10,7 @@ import UIKit
 class EXViewController: UIViewController {
     
     let logoImageView = UIImageView()
+    var containerView: UIView!
     let contentStackView = UIView()
     let contentHeaderView = UIView()
     let contentTitle = UILabel()
@@ -19,6 +20,7 @@ class EXViewController: UIViewController {
     let convertButton = UIButton()
     
     var exchanges: CurrencyExchange?
+    var currenctCurrency: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,6 @@ class EXViewController: UIViewController {
     }
     
     private func getCurrencies() {
-        
         Task {
             do {
                 let currencies = try await NetworkManager.shared.getCurrencies()
@@ -82,8 +83,8 @@ class EXViewController: UIViewController {
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.heightAnchor.constraint(equalToConstant: 32),
-            logoImageView.widthAnchor.constraint(equalToConstant: 140)
+            logoImageView.heightAnchor.constraint(equalToConstant: 48),
+            logoImageView.widthAnchor.constraint(equalToConstant: 210)
         ])
     }
     
@@ -98,10 +99,10 @@ class EXViewController: UIViewController {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 200),
+            contentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 120),
             contentStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             contentStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            contentStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -120)
+            contentStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200)
         ])
     }
     
@@ -200,8 +201,9 @@ class EXViewController: UIViewController {
     
     @objc private func didTapButton() {
         
-        if exchanges == nil {
+        if exchanges == nil || currenctCurrency != currencyInput.currency {
             if let currency = currencyInput.currency {
+                currenctCurrency = currencyInput.currency
                 exchangeCurrency(currency: currency)
             }
         } else {
@@ -220,7 +222,7 @@ class EXViewController: UIViewController {
            let exchange = exchanges.data[currencyTo] {
                         
             currencyInput.set(value: valueFromNumber)
-            currencyOutput.set(value: valueFromNumber / exchange)
+            currencyOutput.set(value: valueFromNumber * exchange)
         }
     }
 }
